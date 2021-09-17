@@ -1143,7 +1143,7 @@ export class Ext extends Ecs.System<ExtEvent> {
                 }
                 this.register(Events.window_move(this, win, rect));
             } else {
-                win.move(this, rect, () => {}, false);
+                win.move(this, rect, () => {});
                 // if the resulting dimensions of rect == next
                 if (rect.width == next_area.width && rect.height == next_area.height) {
                     win.meta.maximize(Meta.MaximizeFlags.BOTH)

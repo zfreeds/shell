@@ -1,103 +1,48 @@
 //@ts-ignore
 const Me = imports.misc.extensionUtils.getCurrentExtension()
 
-import * as utils from 'utils'
-import * as log from 'log'
+import * as ipc_service from 'ipc_service'
 
-const { Gio, GLib } = imports.gi
-const { byteArray } = imports;
+const { IpcService } = ipc_service;
 
 /** Reads JSON responses from the launcher service asynchronously, and sends requests.
  *
  * # Note
  * You must call `LauncherService::exit()` before dropping.
  */
-export class LauncherService {
-    service: utils.AsyncIPC
-    /** When exiting the service */
-    cancellable: any = new Gio.Cancellable()
-
-    constructor(service: utils.AsyncIPC, callback: (response: JsonIPC.Response) => void) {
-        this.service = service
-
-        /** Recursively registers an intent to read the next line asynchronously  */
-        const generator = (stdout: any, res: any) => {
-            try {
-                const [bytes,] = stdout.read_line_finish(res)
-                if (bytes) {
-                    const string = byteArray.toString(bytes)
-                    // log.debug(`received response from launcher service: ${string}`)
-                    callback(JSON.parse(string))
-                    this.service.stdout.read_line_async(0, this.cancellable, generator)
-                }
-            } catch (why) {
-                log.error(`failed to read response from launcher service: ${why}`)
-            }
-        }
-
-        this.service.stdout.read_line_async(0, this.cancellable, generator)
-    }
-
+export class LauncherService extends IpcService {
     activate(id: number) {
-        this.send({ "Activate": id })
+        super.send({ "Activate": id })
     }
 
     activate_context(id: number, context: number) {
-        this.send({ "ActivateContext": { id, context }})
+        super.send({ "ActivateContext": { id, context }})
     }
 
     complete(id: number) {
-        this.send({ "Complete": id })
+        super.send({ "Complete": id })
     }
 
     context(id: number) {
-        this.send({ "Context": id })
+        super.send({ "Context": id })
     }
 
     exit() {
-        this.send('Exit')
-        this.cancellable.cancel()
-        const service = this.service
-
-        GLib.timeout_add(GLib.PRIORITY_DEFAULT, 100, () => {
-            if (service.stdout.has_pending() || service.stdin.has_pending()) return true
-
-            const close_stream = (stream: any) => {
-                try {
-                    stream.close(null)
-                } catch (why) {
-                    log.error(`failed to close pop-launcher stream: ${why}`)
-                }
-            }
-
-            close_stream(service.stdin)
-            close_stream(service.stdin)
-
-            // service.child.send_signal(15)
-
-            return false;
-        })
+        if (!super.connection) return
+        super.send('Exit')
+        super.disconnect()
     }
 
     query(search: string) {
-        this.send({ "Search": search })
+        super.send({ "Search": search })
     }
 
     quit(id: number) {
-        this.send({ "Quit": id })
+        super.send({ "Quit": id })
     }
 
     select(id: number) {
-        this.send({ "Select": id })
-    }
-
-    send(object: Object) {
-        const message = JSON.stringify(object)
-        try {
-            this.service.stdin.write_all(message + "\n", null)
-        } catch (why) {
-            log.error(`failed to send request to pop-launcher: ${why}`)
-        }
+        super.send({ "Select": id })
     }
 }
 

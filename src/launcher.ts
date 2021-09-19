@@ -2,7 +2,6 @@
 const Me = imports.misc.extensionUtils.getCurrentExtension()
 
 import * as search from 'search'
-import * as utils from 'utils'
 import * as arena from 'arena'
 import * as log from 'log'
 import * as service from 'launcher_service'
@@ -29,13 +28,15 @@ export class Launcher extends search.Search {
     options: Map<number, SearchOption> = new Map()
     options_array: Array<SearchOption> = new Array()
     windows: arena.Arena<ShellWindow> = new arena.Arena()
-    service: null | service.LauncherService = null
+    service: service.LauncherService
     append_id: null | number = null
 
     constructor(ext: Ext) {
         super()
 
         this.ext = ext
+
+        this.service = new service.LauncherService(["pop-launcher"], (resp) => this.on_response(resp));
 
         this.dialog.dialogLayout._dialog.y_align = Clutter.ActorAlign.START
         this.dialog.dialogLayout._dialog.x_align = Clutter.ActorAlign.START
@@ -343,18 +344,11 @@ export class Launcher extends search.Search {
     }
 
     start_services() {
-        if (this.service === null) {
-            log.debug("starting pop-launcher service")
-            const ipc = utils.async_process_ipc(['pop-launcher'])
-            this.service = ipc ? new service.LauncherService(ipc, (resp) => this.on_response(resp)) : null
-        }
+        this.service.connect()
     }
 
     stop_services(_ext: Ext) {
-        if (this.service !== null) {
-            log.info(`stopping pop-launcher services`)
-            this.service.exit()
-            this.service = null
-        }
+        this.service.exit()
+        this.service.disconnect()
     }
 }

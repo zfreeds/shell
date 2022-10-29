@@ -17,6 +17,10 @@
         "noUnusedParameters": true
     },
     "include": [
-        "src/*.ts"
+        "src/**/*",
+    ],
+    "exclude": [
+        "src/color_dialog",
+        "src/floating_exceptions"
     ]
 }

@@ -12,4 +12,6 @@ debian/*
 !debian/*install
 .confirm_shortcut_change
 .vscode
+out
+.idea
 node_modules

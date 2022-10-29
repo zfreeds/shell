@@ -4,13 +4,13 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 import type { Forest } from './forest';
 import type { Entity } from 'ecs';
 import type { Ext } from 'extension';
-import type { Rectangle } from 'rectangle';
-import type { Node } from 'node';
+import type { Rectangle } from 'src/models/rectangle';
+import type { Node } from 'src/models/node';
 
 import * as Ecs from 'ecs';
 import * as Lib from 'lib';
-import * as node from 'node';
-import * as Rect from 'rectangle';
+import * as node from 'src/models/node';
+import * as Rect from 'src/models/rectangle';
 import { ShellWindow } from './window';
 
 const XPOS = 0;

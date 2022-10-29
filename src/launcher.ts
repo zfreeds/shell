@@ -3,7 +3,7 @@ const Me = imports.misc.extensionUtils.getCurrentExtension()
 
 import * as search from 'search'
 import * as utils from 'utils'
-import * as arena from 'arena'
+import * as arena from 'src/models/arena'
 import * as log from 'log'
 import * as service from 'launcher_service'
 import * as context from 'context'

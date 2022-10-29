@@ -3,16 +3,16 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 import * as lib from 'lib';
 import * as log from 'log';
-import * as once_cell from 'once_cell';
-import * as Rect from 'rectangle';
-import * as Tags from 'tags';
+import * as once_cell from 'src/models/once_cell';
+import * as Rect from 'src/models/rectangle';
+import * as Tags from 'src/consts/tags';
 import * as utils from 'utils';
 import * as xprop from 'xprop';
 import type { Entity } from './ecs';
 import type { Ext } from './extension';
-import type { Rectangle } from './rectangle';
+import type { Rectangle } from './models/rectangle';
 import * as scheduler from 'scheduler';
-import * as focus from 'focus';
+import * as focus from 'src/focus';
 
 const { Gdk, Meta, Shell, St, GLib } = imports.gi;
 

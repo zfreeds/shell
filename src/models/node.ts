@@ -1,14 +1,14 @@
 // @ts-ignore
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
-import * as Ecs from 'ecs';
+import * as Ecs from 'src/ecs';
 
-import type { Forest } from './forest';
-import type { Entity } from 'ecs';
-import type { Ext } from 'extension';
-import type { Rectangle } from 'rectangle';
-import type { Stack } from 'stack';
-import { ShellWindow } from './window';
+import type { Forest } from '../forest';
+import type { Entity } from 'src/ecs';
+import type { Ext } from 'src/extension';
+import type { Rectangle } from 'src/models/rectangle';
+import type { Stack } from 'src/stack';
+import { ShellWindow } from '../window';
 
 /** A node is either a fork a window */
 export enum NodeKind {

@@ -5,7 +5,7 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 const { GObject, St } = imports.gi;
 
-import * as Lib from 'lib';
+import * as Lib from '../lib';
 
 const { separator } = Lib;
 

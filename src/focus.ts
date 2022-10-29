@@ -1,9 +1,9 @@
 // @ts-ignore
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
-import * as Geom from 'geom';
+import * as Geom from 'src/geom';
 
-import type { ShellWindow } from 'window';
+import type { ShellWindow } from 'src/window';
 import type { Ext } from './extension';
 
 export enum FocusPosition {

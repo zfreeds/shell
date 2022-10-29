@@ -9,21 +9,37 @@ export class Rectangle {
         return new Rectangle([meta.x, meta.y, meta.width, meta.height]);
     }
 
-    get x() { return this.array[0]; }
+    get x() {
+        return this.array[0];
+    }
 
-    set x(x: number) { this.array[0] = x; }
+    set x(x: number) {
+        this.array[0] = x;
+    }
 
-    get y() { return this.array[1]; }
+    get y() {
+        return this.array[1];
+    }
 
-    set y(y: number) { this.array[1] = y; }
+    set y(y: number) {
+        this.array[1] = y;
+    }
 
-    get width(): number { return this.array[2]; }
+    get width(): number {
+        return this.array[2];
+    }
 
-    set width(width: number) { this.array[2] = width; }
+    set width(width: number) {
+        this.array[2] = width;
+    }
 
-    get height() { return this.array[3]; }
+    get height() {
+        return this.array[3];
+    }
 
-    set height(height: number) { this.array[3] = height; }
+    set height(height: number) {
+        this.array[3] = height;
+    }
 
     apply(other: Rectangle): this {
         this.x += other.x;

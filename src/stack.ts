@@ -6,7 +6,7 @@ import type { Ext } from './extension';
 import type { ShellWindow } from './window';
 
 import * as Ecs from 'ecs';
-import * as a from 'arena';
+import * as a from 'src/models/arena';
 import * as utils from 'utils';
 
 const Arena = a.Arena;

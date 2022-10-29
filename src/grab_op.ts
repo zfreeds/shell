@@ -4,7 +4,7 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 import * as Movement from 'movement';
 
 import type { Entity } from 'ecs';
-import type { Rectangle } from 'rectangle';
+import type { Rectangle } from 'src/models/rectangle';
 
 export class GrabOp {
     entity: Entity;

@@ -2,7 +2,7 @@
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 import * as Lib from 'lib';
-import * as rect from 'rectangle';
+import * as rect from 'src/models/rectangle';
 
 import type { JsonIPC } from 'launcher_service'
 

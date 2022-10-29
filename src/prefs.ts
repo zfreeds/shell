@@ -8,9 +8,9 @@ const { Gtk } = imports.gi;
 
 const { Settings } = imports.gi.Gio;
 
-import * as settings from 'settings';
+import * as settings from 'src/models/settings';
 import * as log from 'log';
-import * as focus from 'focus';
+import * as focus from 'src/focus';
 
 interface AppWidgets {
     fullscreen_launcher: any,

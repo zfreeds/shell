@@ -5,17 +5,17 @@ const Me = imports.misc.extensionUtils.getCurrentExtension();
 import * as GrabOp from 'grab_op';
 import * as Lib from 'lib';
 import * as Log from 'log';
-import * as Node from 'node';
-import * as Rect from 'rectangle';
-import * as Tags from 'tags';
+import * as Node from 'src/models/node';
+import * as Rect from 'src/models/rectangle';
+import * as Tags from 'src/consts/tags';
 import * as window from 'window';
 import * as geom from 'geom';
 import * as exec from 'executor';
 
 import type { Entity } from './ecs';
-import type { Rectangle } from './rectangle';
+import type { Rectangle } from './models/rectangle';
 import type { Ext } from './extension';
-import type { NodeStack } from './node';
+import type { NodeStack } from './models/node';
 import { AutoTiler } from './auto_tiler';
 import { Fork } from './fork';
 

@@ -3,9 +3,9 @@
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
 import * as log from 'log';
-import * as rectangle from 'rectangle';
+import * as rectangle from 'src/models/rectangle';
 
-import type { Rectangle } from 'rectangle';
+import type { Rectangle } from 'src/models/rectangle';
 
 const { Meta, St } = imports.gi;
 

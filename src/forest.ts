@@ -1,18 +1,18 @@
 // @ts-ignore
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
-import * as arena from 'arena';
+import * as arena from 'src/models/arena';
 import * as Ecs from 'ecs';
 import * as Lib from 'lib';
 import * as log from 'log';
 import * as movement from 'movement';
-import * as Rect from 'rectangle';
-import * as Node from 'node';
+import * as Rect from 'src/models/rectangle';
+import * as Node from 'src/models/node';
 import * as Fork from 'fork';
 import * as geom from 'geom';
 
 import type { Entity } from 'ecs';
-import type { Rectangle } from './rectangle';
+import type { Rectangle } from './models/rectangle';
 import type { ShellWindow } from './window';
 import type { Ext } from './extension';
 import { Stack } from './stack';

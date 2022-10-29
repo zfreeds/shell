@@ -1,8 +1,8 @@
 // @ts-ignore
 const Me = imports.misc.extensionUtils.getCurrentExtension();
 
-import * as result from 'result';
-import * as error from 'error';
+import * as result from 'src/models/result';
+import * as error from 'src/models/error';
 import * as log from 'log';
 
 const { Gio, GLib, GObject, Meta } = imports.gi;
